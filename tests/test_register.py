@@ -1,3 +1,5 @@
+import random
+
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from search_elements import TestLocators
@@ -7,13 +9,14 @@ from search_elements import TestLocators
 class TestRegistration:
 
     def test_registration_successful(self,driver):
-
+        n = str(random.randint(000, 999))
+        email = f'egorfimushkin11{n}@yandex.ru'
         driver.find_element(*TestLocators.VOITY_BUTTON).click()
         driver.find_element(*TestLocators.REGISTER_BUTTON_1).click()
 
 
         driver.find_element(*TestLocators.NAME_INPUT_FIELD).send_keys('Егор')
-        driver.find_element(*TestLocators.EMAIL_INPUT_FIELD).send_keys("egorfimushkin11137@yandex.ru")
+        driver.find_element(*TestLocators.EMAIL_INPUT_FIELD).send_keys(email)
         driver.find_element(*TestLocators.PASSWORD_INPUT_FIELD).send_keys('123456')
         driver.find_element(*TestLocators.REGISTER_BUTTON_FINAL).click()
         WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(TestLocators.OZHIDANIE_POSLE_ZAPOLNENIYA_REGISTRACII))
@@ -25,13 +28,16 @@ class TestRegistration:
 
 
     def test_registration_non_valid_password(self,driver):
-
+        n = str(random.randint(000, 999))
+        email = f'egorfimushkin11{n}@yandex.ru'
+        p = str(random.randint(00000,99999))
+        password = f'{p}'
         driver.find_element(*TestLocators.VOITY_BUTTON).click()
         driver.find_element(*TestLocators.REGISTER_BUTTON_1).click()
 
         driver.find_element(*TestLocators.NAME_INPUT_FIELD).send_keys('Егор')
-        driver.find_element(*TestLocators.EMAIL_INPUT_FIELD).send_keys("egorfimushkin11126@yandex.ru")
-        driver.find_element(*TestLocators.PASSWORD_INPUT_FIELD).send_keys('12345')
+        driver.find_element(*TestLocators.EMAIL_INPUT_FIELD).send_keys(email)
+        driver.find_element(*TestLocators.PASSWORD_INPUT_FIELD).send_keys(password)
         driver.find_element(*TestLocators.REGISTER_BUTTON_FINAL).click()
         WebDriverWait(driver,3).until(expected_conditions.visibility_of_element_located(TestLocators.NEVERNIY_PAROL))
         assert driver.find_element(*TestLocators.NEVERNIY_PAROL)

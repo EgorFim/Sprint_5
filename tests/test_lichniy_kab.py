@@ -29,7 +29,7 @@ class TestLichnyiKabinet:
         driver_2.find_element(*TestLocators.KNOPKA_LICHNYI_KABINET).click()
         WebDriverWait(driver_2, 3).until(expected_conditions.visibility_of_element_located(TestLocators.V_LICHNOM_KABINETE))
         driver_2.find_element(*TestLocators.KNOPKA_VYHOD).click()
-        assert WebDriverWait(driver_2, 3).until(expected_conditions.visibility_of_element_located(TestLocators.KONSTRUKTOR_PROVERKA))
+        assert WebDriverWait(driver_2, 3).until(expected_conditions.visibility_of_element_located(TestLocators.PROVERKA_VYHODA))
 
 
 

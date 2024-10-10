@@ -56,3 +56,5 @@ class TestLocators:
     #поиск названия булки
     PROVERKA_VKLADKA_NACHINKI = By.XPATH, './/*[text()="Мясо бессмертных моллюсков Protostomia"]'
     #поиск названия начинки
+    PROVERKA_VYHODA = By.XPATH, './/*[text()="Вход"]'
+    #поиск кнопки "Вход" для проверки выхода из аккаунта

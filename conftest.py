@@ -9,7 +9,8 @@ from search_elements import TestLocators
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
-    driver.get('https://stellarburgers.nomoreparties.site/')
+    TEST_URL = 'https://stellarburgers.nomoreparties.site/'
+    driver.get(TEST_URL)
     WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(TestLocators.ZAGRUZKA_GLAVNOI))
     yield driver
     driver.quit()
@@ -17,7 +18,8 @@ def driver():
 @pytest.fixture
 def driver_2():
     driver = webdriver.Chrome()
-    driver.get('https://stellarburgers.nomoreparties.site/')
+    TEST_URL = 'https://stellarburgers.nomoreparties.site/'
+    driver.get(TEST_URL)
     WebDriverWait(driver,3).until(expected_conditions.visibility_of_element_located(TestLocators.ZAGRUZKA_GLAVNOI))
     driver.find_element(*TestLocators.KNOPKA_LICHNYI_KABINET).click()
     driver.find_element(*TestLocators.EMAIL_ADD).send_keys("egorfimushkin11137@yandex.ru")
